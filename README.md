@@ -158,6 +158,27 @@ var pipeline = new ResiliencePipelineBuilder()
 
 ---
 
+## Publishing
+
+This package is published to NuGet.org via **GitHub Actions using [NuGet trusted publishing](https://learn.microsoft.com/en-us/nuget/nuget-org/publish-a-package#trusted-publishing)** — no API key secret is stored in the repository.
+
+### Setup (one-time)
+
+1. On [nuget.org](https://www.nuget.org), go to your package → **Manage** → **Trusted Publishers** → **Add a publisher**  
+2. Choose **GitHub Actions** and enter:  
+   - **Owner**: `justinbannister`  
+   - **Repository**: `Polly.Contrib.OpenTelemetry`  
+   - **Workflow**: `build.yml`  
+3. Push a `v*` tag to trigger the publish workflow:
+   ```bash
+   git tag v1.0.0
+   git push --tags
+   ```
+
+The workflow requests a short-lived OIDC token from GitHub (audience `api.nuget.org`) and uses it as the push credential — no `NUGET_API_KEY` secret required.
+
+---
+
 ## License
 
 MIT — Copyright © 2025 Justin Bannister
