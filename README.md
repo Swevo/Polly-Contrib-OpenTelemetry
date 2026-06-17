@@ -1,6 +1,6 @@
-# Polly.Contrib.OpenTelemetry
+# PollyOpenTelemetry
 
-[![NuGet](https://img.shields.io/nuget/v/Polly.Contrib.OpenTelemetry)](https://www.nuget.org/packages/Polly.Contrib.OpenTelemetry)
+[![NuGet](https://img.shields.io/nuget/v/PollyOpenTelemetry)](https://www.nuget.org/packages/PollyOpenTelemetry)
 
 OpenTelemetry instrumentation for [Polly v8](https://github.com/App-vNext/Polly) resilience pipelines.
 
@@ -14,7 +14,7 @@ Emits **distributed trace spans** (`Activity`) and **metrics** for retry, circui
 ## Installation
 
 ```
-dotnet add package Polly.Contrib.OpenTelemetry
+dotnet add package PollyOpenTelemetry
 ```
 
 ---
