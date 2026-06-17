@@ -90,39 +90,6 @@ jobs:
           path: nupkgs/*.nupkg
           retention-days: 30
 
-      - name: Debug raw NuGet token exchange
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/github-script@v7
-        env:
-          NUGET_USERNAME: ${{ secrets.NUGET_USERNAME }}
-        with:
-          script: |
-            // Get OIDC token for NuGet audience
-            const oidcToken = await core.getIDToken('https://www.nuget.org')
-
-            // Decode JWT payload for inspection
-            const payload = JSON.parse(Buffer.from(oidcToken.split('.')[1], 'base64url').toString())
-            core.info('=== OIDC Claims ===')
-            for (const k of ['sub','repository','repository_owner','workflow','workflow_ref','job_workflow_ref','ref','event_name']) {
-              if (payload[k]) core.info(`${k}: ${payload[k]}`)
-            }
-
-            // Raw token exchange
-            core.info('=== Token Exchange ===')
-            core.info(`username: ${process.env.NUGET_USERNAME}`)
-            const resp = await fetch('https://www.nuget.org/api/v2/token', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${oidcToken}`,
-                'Content-Type': 'application/json',
-                'User-Agent': 'debug/1.0'
-              },
-              body: JSON.stringify({ username: process.env.NUGET_USERNAME, tokenType: 'ApiKey' })
-            })
-            const body = await resp.text()
-            core.info(`HTTP Status: ${resp.status}`)
-            core.info(`Response: ${body}`)
-
       # Exchange GitHub OIDC token for a short-lived NuGet API key via trusted publishing.
       # Requires: id-token: write permission above, and a Trusted Publisher configured
       # on nuget.org pointing to this repo + workflow.
@@ -140,6 +107,3 @@ jobs:
           --api-key ${{ steps.nuget-login.outputs.NUGET_API_KEY }}
           --source https://api.nuget.org/v3/index.json
           --skip-duplicate
-
-
-
