@@ -1,0 +1,5 @@
+nupkgs/
+*.user
+.vs/
+bin/
+obj/
