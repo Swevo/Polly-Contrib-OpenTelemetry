@@ -77,7 +77,7 @@ jobs:
 
       - name: Pack
         run: >
-          dotnet pack src/PollyOpenTelemetry/PollyOpenTelemetry.csproj
+          dotnet pack src/Polly.Contrib.OpenTelemetry/Polly.Contrib.OpenTelemetry.csproj
           --configuration Release
           --no-build
           --output nupkgs
