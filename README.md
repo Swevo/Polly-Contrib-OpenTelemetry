@@ -167,7 +167,7 @@ This package is published to NuGet.org via **GitHub Actions using [NuGet trusted
 1. On [nuget.org](https://www.nuget.org), go to your package → **Manage** → **Trusted Publishers** → **Add a publisher**  
 2. Choose **GitHub Actions** and enter:  
    - **Owner**: `justinbannister`  
-   - **Repository**: `Polly.Contrib.OpenTelemetry`  
+   - **Repository**: `Polly-Contrib-OpenTelemetry`  
    - **Workflow**: `build.yml`  
 3. Push a `v*` tag to trigger the publish workflow:
    ```bash
