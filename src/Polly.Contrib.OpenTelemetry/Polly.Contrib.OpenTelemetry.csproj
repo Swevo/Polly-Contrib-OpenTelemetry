@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- NuGet package metadata -->
+    <PackageId>Polly.Contrib.OpenTelemetry</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Justin Bannister</Authors>    <Description>OpenTelemetry instrumentation for Polly v8 resilience pipelines. Emits distributed traces (Activity spans) and metrics for retry, circuit breaker, timeout, and rate limiter strategies.</Description>
+    <PackageTags>polly;opentelemetry;otel;resilience;retry;circuit-breaker;telemetry;observability;tracing;metrics</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/justinbannister/Polly.Contrib.OpenTelemetry</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/justinbannister/Polly.Contrib.OpenTelemetry</PackageProjectUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright © 2025 Justin Bannister</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Polly.Core" Version="8.*" />
+    <PackageReference Include="OpenTelemetry" Version="1.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

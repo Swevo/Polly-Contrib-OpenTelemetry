@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Polly.Contrib.OpenTelemetry/Polly.Contrib.OpenTelemetry.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Polly.Contrib.OpenTelemetry.Tests/Polly.Contrib.OpenTelemetry.Tests.csproj" />
+  </Folder>
+</Solution>
