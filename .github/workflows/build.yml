@@ -48,6 +48,7 @@ jobs:
     needs: build
     permissions:
       id-token: write   # required for NuGet trusted publishing
+      contents: read
 
     steps:
       - name: Checkout
@@ -95,7 +96,22 @@ jobs:
         id: nuget-token
         with:
           script: |
-            const token = await core.getIDToken('api.nuget.org')
+            // Step 1: obtain GitHub OIDC token for NuGet audience
+            const oidcToken = await core.getIDToken('api.nuget.org')
+
+            // Step 2: exchange OIDC token for a short-lived NuGet API key
+            const response = await fetch('https://api.nuget.org/v1/package/publish/token', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ oidcToken })
+            })
+
+            if (!response.ok) {
+              const body = await response.text()
+              throw new Error(`NuGet token exchange failed (${response.status}): ${body}`)
+            }
+
+            const { token } = await response.json()
             core.setSecret(token)
             return token
           result-encoding: string
