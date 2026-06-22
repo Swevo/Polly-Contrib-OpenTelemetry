@@ -1,5 +1,7 @@
 # PollyOpenTelemetry
 
+<img src="icon.png" width="100" align="right" />
+
 [![NuGet](https://img.shields.io/nuget/v/PollyOpenTelemetry)](https://www.nuget.org/packages/PollyOpenTelemetry)
 
 OpenTelemetry instrumentation for [Polly v8](https://github.com/App-vNext/Polly) resilience pipelines.
