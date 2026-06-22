@@ -181,6 +181,14 @@ The workflow requests a short-lived OIDC token from GitHub (audience `api.nuget.
 
 ---
 
+## Support
+
+If PollyOpenTelemetry improves your observability, consider supporting the project:
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?logo=github)](https://github.com/sponsors/Swevo)
+
+> 💼 **Need .NET observability or resilience help?** Visit [solidqualitysolutions.com](https://solidqualitysolutions.com/) for consulting and architecture services.
+
 ## License
 
 MIT — Copyright © 2025 Justin Bannister
