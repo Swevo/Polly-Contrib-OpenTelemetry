@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -12,7 +12,10 @@
     <Version>1.0.0</Version>
     <Authors>Justin Bannister</Authors>
     <Description>OpenTelemetry instrumentation for Polly v8 resilience pipelines. Emits distributed traces (Activity spans) and metrics for retry, circuit breaker, timeout, and rate limiter strategies.</Description>
-    <PackageTags>polly;opentelemetry;otel;resilience;retry;circuit-breaker;telemetry;observability;tracing;metrics</PackageTags>
+    <PackageTags>polly;opentelemetry;otel;resilience;retry;circuit-breaker;telemetry;observability;tracing;metrics;distributed-tracing;activity-source;meter;aspire;dotnet</PackageTags>
+    <Title>PollyOpenTelemetry — OpenTelemetry traces and metrics for Polly v8</Title>
+    <PackageSummary>Adds distributed trace spans and enriched metrics to Polly v8 retry, circuit breaker, and timeout strategies — the missing OpenTelemetry-native observability layer for Polly.</PackageSummary>
+    <PackageReleaseNotes>1.0.2: Critical fix — Microsoft.Extensions.DependencyInjection.Abstractions dependency corrected from v10 to v8, enabling installation on .NET 8 projects. Added net9.0 target.</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Swevo/Polly-Contrib-OpenTelemetry</RepositoryUrl>
@@ -37,7 +40,7 @@
     </PackageReference>
     <PackageReference Include="Polly.Core" Version="8.*" />
     <PackageReference Include="OpenTelemetry" Version="1.*" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.*" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.*" />
   </ItemGroup>
 
   <ItemGroup>
