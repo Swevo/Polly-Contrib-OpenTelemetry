@@ -209,6 +209,8 @@ If PollyOpenTelemetry improves your observability, consider supporting the proje
 | [PollyBulkhead](https://www.nuget.org/packages/PollyBulkhead) | Bulkhead isolation |
 | [PollyRateLimiter](https://www.nuget.org/packages/PollyRateLimiter) | Rate limiting strategies |
 
+| [PollyRabbitMQ](https://www.nuget.org/packages/PollyRabbitMQ) | Polly v8 resilience for RabbitMQ.Client channels |
+
 ## License
 
 MIT — Copyright © 2025 Justin Bannister
