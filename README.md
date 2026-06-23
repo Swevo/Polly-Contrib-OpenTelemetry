@@ -195,6 +195,7 @@ If PollyOpenTelemetry improves your observability, consider supporting the proje
 | Package | Description |
 |---|---|
 | [PollyChaos](https://www.nuget.org/packages/PollyChaos) | Chaos engineering — inject faults & latency (Simmy for v8) |
+| [PollyMediatR](https://www.nuget.org/packages/PollyMediatR) | Polly v8 pipelines for MediatR request handlers |
 | [PollyBackoff](https://www.nuget.org/packages/PollyBackoff) | Backoff delay strategies |
 | [PollyHealthChecks](https://www.nuget.org/packages/PollyHealthChecks) | ASP.NET Core health check integration |
 | [PollyCaching](https://www.nuget.org/packages/PollyCaching) | Caching resilience strategy |
