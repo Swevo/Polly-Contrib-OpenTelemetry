@@ -1,0 +1,68 @@
+name: Publish Missing Packages
+
+on:
+  workflow_dispatch:
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
+
+jobs:
+  publish:
+    name: Publish Polly.Contrib.Caching and Polly.Contrib.Bulkhead
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Polly.Contrib.Caching
+        uses: actions/checkout@v4
+        with:
+          repository: Swevo/Polly.Contrib.Caching
+          path: Polly.Contrib.Caching
+
+      - name: Checkout Polly.Contrib.Bulkhead
+        uses: actions/checkout@v4
+        with:
+          repository: Swevo/Polly.Contrib.Bulkhead
+          path: Polly.Contrib.Bulkhead
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build and Pack Polly.Contrib.Caching
+        working-directory: Polly.Contrib.Caching
+        run: |
+          dotnet restore
+          dotnet build --configuration Release --no-restore
+          dotnet pack src/Polly.Contrib.Caching/Polly.Contrib.Caching.csproj \
+            --configuration Release \
+            --no-build \
+            --output nupkgs \
+            /p:Version=1.0.0
+
+      - name: Build and Pack Polly.Contrib.Bulkhead
+        working-directory: Polly.Contrib.Bulkhead
+        run: |
+          dotnet restore
+          dotnet build --configuration Release --no-restore
+          dotnet pack src/Polly.Contrib.Bulkhead/Polly.Contrib.Bulkhead.csproj \
+            --configuration Release \
+            --no-build \
+            --output nupkgs \
+            /p:Version=1.0.0
+
+      - name: Publish to NuGet.org
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push Polly.Contrib.Caching/nupkgs/*.nupkg \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+          dotnet nuget push Polly.Contrib.Bulkhead/nupkgs/*.nupkg \
+            --api-key "$NUGET_API_KEY" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
