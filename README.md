@@ -2,8 +2,9 @@
 
 <img src="icon.png" width="100" align="right" />
 
-[![NuGet](https://img.shields.io/nuget/v/PollyOpenTelemetry)](https://www.nuget.org/packages/PollyOpenTelemetry)
+[![NuGet](https://img.shields.io/nuget/v/PollyOpenTelemetry.svg)](https://www.nuget.org/packages/PollyOpenTelemetry)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/PollyOpenTelemetry.svg)](https://www.nuget.org/packages/PollyOpenTelemetry)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 OpenTelemetry instrumentation for [Polly v8](https://github.com/App-vNext/Polly) resilience pipelines.
 
